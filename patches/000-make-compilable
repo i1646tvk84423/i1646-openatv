@@ -1,0 +1,45 @@
+--- build-enviroment/meta-oe-alliance/meta-oe/recipes-multimedia/libpng/libpng_1.5.14.bb.orig	2015-04-21 19:29:53.598292648 +0800
++++ build-enviroment/meta-oe-alliance/meta-oe/recipes-multimedia/libpng/libpng_1.5.14.bb	2015-04-21 19:30:50.140077506 +0800
+@@ -10,7 +10,7 @@
+ 
+ PR = "r2"
+ 
+-SRC_URI = "${SOURCEFORGE_MIRROR}/libpng/libpng15/${PV}/libpng-${PV}.tar.gz"
++SRC_URI = "${SOURCEFORGE_MIRROR}/libpng/libpng15/older-releases/${PV}/libpng-${PV}.tar.gz"
+ S = "${WORKDIR}/libpng-${PV}"
+ 
+ inherit autotools pkgconfig binconfig
+--- build-enviroment/meta-oe-alliance/meta-oe/recipes-connectivity/rtorrent/libtorrent_0.13.2.bb.orig	2015-06-07 17:17:59.634208989 +0800
++++ build-enviroment/meta-oe-alliance/meta-oe/recipes-connectivity/rtorrent/libtorrent_0.13.2.bb	2015-06-07 18:04:57.380723972 +0800
+@@ -7,7 +7,13 @@
+ DEPENDS = "cppunit libsigc++-2.0 openssl"
+ PR = "r0"
+ 
+-SRC_URI = "http://libtorrent.rakshasa.no/downloads/${PN}-${PV}.tar.gz" 
++LIBTORRENT_MIRROR = "http://libtorrent.rakshasa.no/downloads"
++
++MIRRORS += "\
++${LIBTORRENT_MIRROR}	https://acelnmp.googlecode.com/files \n \
++"
++
++SRC_URI = "${LIBTORRENT_MIRROR}/${PN}-${PV}.tar.gz"
+ 
+ EXTRA_OECONF = " --enable-aligned --without-kqueue"
+ 
+--- build-enviroment/meta-oe-alliance/meta-oe/recipes-connectivity/rtorrent/rtorrent_0.9.2.bb.orig   2015-06-07 17:17:59.634208989 +0800
++++ build-enviroment/meta-oe-alliance/meta-oe/recipes-connectivity/rtorrent/rtorrent_0.9.2.bb        2015-06-07 18:04:57.380723972 +0800
+@@ -7,7 +7,13 @@
+ DEPENDS = "cppunit libtorrent curl ncurses gnutls libgpg-error"
+ PR = "r0"
+
+-SRC_URI = "http://libtorrent.rakshasa.no/downloads/${PN}-${PV}.tar.gz \
++LIBTORRENT_MIRROR = "http://libtorrent.rakshasa.no/downloads"
++
++MIRRORS += "\
++${LIBTORRENT_MIRROR}   https://acelnmp.googlecode.com/files \n \
++"
++
++SRC_URI = "${LIBTORRENT_MIRROR}/${PN}-${PV}.tar.gz \
+     file://autoconf-cross-fix.patch"
+
+ inherit autotools pkgconfig
