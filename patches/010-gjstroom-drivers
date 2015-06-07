@@ -1,0 +1,72 @@
+--- /dev/null	2015-02-28 15:38:01.680001730 +0800
++++ build-enviroment/meta-oe-alliance/meta-brands/meta-dream/recipes-drivers/dreambox-dvb-modules-dm800_2.6.18-7.4-20130607.bb	2015-04-19 19:30:46.723870808 +0800
+@@ -0,0 +1,22 @@
++require dreambox-dvb-modules.inc
++
++PR = "${INC_PR}.2"
++
++SRC_URI[modules.md5sum] = "07fe648e591452df167053abb85f6c80"
++SRC_URI[modules.sha256sum] = "21cc63b78ecfdbe05c55e5ff571cc565f855b0c3643e6b9ec09f793b6e8f0eb7"
++
++SRC_URI += "file://patch_modules.sh"
++
++#FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
++
++INITSCRIPT_NAME = "patch_modules.sh"
++INITSCRIPT_PARAMS = "start 03 S ."
++
++inherit update-rc.d
++
++do_install_append() {
++	install -d ${D}${sysconfdir}/init.d/
++	install -m 0755 ${WORKDIR}/patch_modules.sh ${D}${sysconfdir}/init.d/
++}
++
++FILES_${PN} += "${sysconfdir}/init.d/patch_modules.sh"
+--- /dev/null	2015-02-28 15:38:01.680001730 +0800
++++ build-enviroment/meta-oe-alliance/meta-brands/meta-dream/recipes-drivers/dreambox-dvb-modules-dm800se_3.2-20131001.bb	2015-04-19 19:29:24.801289449 +0800
+@@ -0,0 +1,8 @@
++require dreambox-dvb-modules.inc
++
++PR = "${INC_PR}.1"
++
++SRC_URI[modules.md5sum] = "9edc9c62e38496297b640514f8941db9"
++SRC_URI[modules.sha256sum] = "0d265b728799bab4e5f859538ad85c6bab407312829285a80234f7f30228f8d2"
++
++
+--- build-enviroment/meta-oe-alliance/meta-brands/meta-dream/recipes-drivers/dreambox-dvb-modules-dm800se_3.2-20140616.bb	2015-04-19 19:39:20.070046195 +0800
++++ /dev/null	2015-02-28 15:38:01.680001730 +0800
+@@ -1,8 +0,0 @@
+-require dreambox-dvb-modules.inc
+-
+-PR = "${INC_PR}.1"
+-
+-SRC_URI[modules.md5sum] = "d507b37fec2c8062a34eb74367178dc2"
+-SRC_URI[modules.sha256sum] = "cb1d0921531b360852098251093670f6583424ef97389534a2094bd044dacc5e"
+-
+-
+--- build-enviroment/meta-oe-alliance/meta-brands/meta-dream/recipes-drivers/dreambox-dvb-modules-dm800_2.6.18-7.4-20131228.bb	2015-04-19 19:39:20.070046195 +0800
++++ /dev/null	2015-02-28 15:38:01.680001730 +0800
+@@ -1,22 +0,0 @@
+-require dreambox-dvb-modules.inc
+-
+-PR = "${INC_PR}.2"
+-
+-SRC_URI[modules.md5sum] = "023e2546f40cd9a9c7a7f968bfd86f7e"
+-SRC_URI[modules.sha256sum] = "a5479477232c89a93b5d327d77d2173399873ea9f6411f146ffa4f7456f9e9d7"
+-
+-SRC_URI += "file://patch_modules.sh"
+-
+-#FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+-
+-INITSCRIPT_NAME = "patch_modules.sh"
+-INITSCRIPT_PARAMS = "start 03 S ."
+-
+-inherit update-rc.d
+-
+-do_install_append() {
+-	install -d ${D}${sysconfdir}/init.d/
+-	install -m 0755 ${WORKDIR}/patch_modules.sh ${D}${sysconfdir}/init.d/
+-}
+-
+-FILES_${PN} += "${sysconfdir}/init.d/patch_modules.sh"
