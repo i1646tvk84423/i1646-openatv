@@ -70,3 +70,66 @@
 -}
 -
 -FILES_${PN} += "${sysconfdir}/init.d/patch_modules.sh"
+--- build-enviroment/meta-oe-alliance/meta-brands/meta-dream/recipes-cfe/dreambox-secondstage-dm800se_84.bb.orig	2015-06-07 22:43:19.669548914 +0800
++++ build-enviroment/meta-oe-alliance/meta-brands/meta-dream/recipes-cfe/dreambox-secondstage-dm800se_84.bb	2015-06-08 00:16:10.510888358 +0800
+@@ -1,6 +1,26 @@
+ require dreambox-secondstage.inc
+ 
+-PR = "${INC_PR}.0"
++RARFILE = "sim2_800SE_SSL84D_for_DRV20131001.rar"
++SECONDSTAGE = "sim2_800SE_SSL84D.bin"
++
++do_install() {
++    install -d ${D}/tmp
++    cd ${D}/tmp
++    unrar e ${S}/${RARFILE} ${SECONDSTAGE}
++    buildimage --arch ${MACHINE} --raw ${EXTRA_BUILDCMD} \
++    --erase-block-size ${DREAMBOX_ERASE_BLOCK_SIZE} \
++    --flash-size ${DREAMBOX_FLASH_SIZE} \
++    --sector-size ${DREAMBOX_SECTOR_SIZE} \
++    --boot-partition=${DREAMBOX_PART0_SIZE}:${SECONDSTAGE} \
++    > ${D}/tmp/secondstage-${MACHINE}.bin
++    install -d ${DEPLOY_DIR_IMAGE}
++    install -m 0644 ${D}/tmp/${SECONDSTAGE} ${DEPLOY_DIR_IMAGE}/secondstage-${MACHINE}.bin
++}
++
++SRC_URI[dm800se.md5sum] = "fb1c41936c132e406944b768ea4150c3"
++SRC_URI[dm800se.sha256sum] = "364a010ccb029bd3f79e27b6d241b1d5eb2ff81dfe476dc812d69f62e6a8db9d"
++
++SRC_URI = "http://www.world-of-files.net/index.php?action=downloadfile&filename=${RARFILE}&directory=Receiver/Dreambox-Clone/Bootloader;name=${MACHINE};downloadfilename=${RARFILE}"
++
++FILES_${PN} = "/tmp/${SECONDSTAGE}"
+ 
+-SRC_URI[md5sum] = "3c335e3d1da39b4275ea2489f218f39b"
+-SRC_URI[sha256sum] = "a378b1eb56780c0a0d19d9380d359b41556983508da05c4a1617f3c6cf702bd2"
+--- build-enviroment/meta-oe-alliance/meta-brands/meta-dream/recipes-cfe/dreambox-secondstage-dm800_84.bb.orig	2015-06-08 00:23:44.744714675 +0800
++++ build-enviroment/meta-oe-alliance/meta-brands/meta-dream/recipes-cfe/dreambox-secondstage-dm800_84.bb	2015-06-08 00:22:32.322510234 +0800
+@@ -1,7 +1,26 @@
+ require dreambox-secondstage.inc
+ 
+-PR = "${INC_PR}.0"
++RARFILE = "sim201_800HD_ssl84D_FOR_DRV20130607.rar"
++SECONDSTAGE = "sim201_ssl84D.bin"
+ 
+-SRC_URI[md5sum] = "365df746869b1bd3738c705068c6d16c"
+-SRC_URI[sha256sum] = "5cddff85d70918805554f72049b105c8d64988ec79815119b5d962f52c17cb32"
++do_install() {
++    install -d ${D}/tmp
++    cd ${D}/tmp
++    unrar e ${S}/${RARFILE} ${SECONDSTAGE}
++    buildimage --arch ${MACHINE} --raw ${EXTRA_BUILDCMD} \
++    --erase-block-size ${DREAMBOX_ERASE_BLOCK_SIZE} \
++    --flash-size ${DREAMBOX_FLASH_SIZE} \
++    --sector-size ${DREAMBOX_SECTOR_SIZE} \
++    --boot-partition=${DREAMBOX_PART0_SIZE}:${SECONDSTAGE} \
++    > ${D}/tmp/secondstage-${MACHINE}.bin
++    install -d ${DEPLOY_DIR_IMAGE}
++    install -m 0644 ${D}/tmp/${SECONDSTAGE} ${DEPLOY_DIR_IMAGE}/secondstage-${MACHINE}.bin
++}
++
++SRC_URI[dm800se.md5sum] = "8cd54798552d4ed8918f7b7fe4a4cda0"
++SRC_URI[dm800se.sha256sum] = "e3cdf2a396dbe19a948fdddb875ad21d17d7c2ff42cceb1e80fc9bf331bd0d35"
++
++SRC_URI = "http://www.world-of-files.net/index.php?action=downloadfile&filename=${RARFILE}&directory=Receiver/Dreambox-Clone/Bootloader;name=${MACHINE};downloadfilename=${RARFILE}"
++
++FILES_${PN} = "/tmp/${SECONDSTAGE}"
