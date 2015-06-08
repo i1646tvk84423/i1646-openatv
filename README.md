@@ -7,10 +7,13 @@
 * Make gjstroom changes - `DONE 2015-06-07`
   * use 20131001 drivers for DM800se, 20130607 drivers for DM800
   * use SIM2 SSL#84d bootloader
-* Actually load .NFI onto a real DM800se and test - `TBD`
-* Do the same and compile OpenATV 5.0 for DM800se. And Test. - `TBD`
-* Compile OpenATV 5.0 for Zgemma H2. And Test. - `TBD`
-* Patch "Chinese EPG" for OpenATV 5.0 for DM800se - `TBD`
-* Patch "Channel 230" for OpenATV 5.0 for DM800se - `TBD`
-* Patch OpenATV 5.0 so that users cannot screw up - `TBD`
+* Test OpenATV 4.2 on DM800se - **`TBD`**
+* Compile OpenATV 5.0 for DM800se - `DONE 2015-06-08`
+* Test OpenATV 5.0 on DM800se - `DONE 2015-06-08`
+  * Make US English instead of German as the default lang - **`TBD`**
+  * Remove my name from kernel build - **`TBD`**
+* Compile OpenATV 5.0 for Zgemma H2. And Test. - **`TBD`**
+* Patch "Chinese EPG" for OpenATV 5.0 for DM800se - **`TBD`**
+* Patch "Channel 230" for OpenATV 5.0 for DM800se - **`TBD`**
+* Patch OpenATV 5.0 so that users cannot screw up - **`TBD`**
   * By disabling s/ware updates
