@@ -12,6 +12,8 @@
 * Test OpenATV 5.0 on DM800se - `DONE 2015-06-08`
   * Make US English instead of German as the default lang - **`TBD`**
   * Remove my name from kernel build - **`TBD`**
+  * Use local bouquets as default - **`TBD`**
+  * Use local picons as default - **`TBD`**
 * Compile OpenATV 5.0 for Zgemma H2. And Test. - **`TBD`**
 * Patch "Chinese EPG" for OpenATV 5.0 for DM800se - **`TBD`**
 * Patch "Channel 230" for OpenATV 5.0 for DM800se - **`TBD`**
